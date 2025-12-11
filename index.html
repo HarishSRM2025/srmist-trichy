@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Institution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            color: #0f4c81;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #0f4c81;
+            text-decoration: none;
+            transition: all 0.3s;
+            /* padding: 0.5rem 1rem; */
+            border-radius: 5px;
+            font-weight: bolder;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Video */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.329) 0%, rgba(26, 94, 158, 0.322) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.6);
+        }
+
+        /* Full Width Sections */
+        section {
+            width: 100%;
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #0f4c81;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ffa500);
+            border-radius: 2px;
+        }
+
+        /* News Section */
+        #news {
+            background: #f8f9fa;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .news-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .news-content {
+            padding: 1.8rem;
+        }
+
+        .news-date {
+            color: #ff6b35;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .news-content h3 {
+            color: #0f4c81;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .news-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Vision & Mission Section */
+        .vision-mission {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .vision-mission-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .vision-card,
+        .mission-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .vision-card:hover,
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .vm-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .vision-card h3,
+        .mission-card h3 {
+            color: #0f4c81;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-card p,
+        .mission-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #0f4c81 0%, #1a5f9e 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Management Section */
+        .management {
+            background: white;
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .management-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .management-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .management-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .management-info {
+            padding: 1.5rem;
+        }
+
+        .management-info h4 {
+            color: #0f4c81;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .management-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Management Section */
+        .management {
+            background: white;
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .management-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .management-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .management-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .management-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .management-info h4 {
+            color: #0f4c81;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .management-info .position {
+            color: #ff6b35;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .voice-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .quote-small {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .chairman-voice {
+            color: #555;
+            font-style: italic;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        /* Faculty Section */
+        .faculty {
+            background: #f8f9fa;
+        }
+
+        .faculty-highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .faculty-stat {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .faculty-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .faculty-stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .faculty-stat h3 {
+            color: #0f4c81;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .faculty-stat p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faculty-about {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .faculty-about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .faculty-about-image {
+            height: 100%;
+            min-height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faculty-about-text h3 {
+            color: #0f4c81;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .faculty-about-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .faculty-about-text h3 i {
+            color: #ff6b35;
+            margin-right: 0.5rem;
+        }
+
+        .faculty-about-text p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Course Section */
+        .course-program {
+            background: #f8f9fa;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            border-top: 4px solid #ff6b35;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .program-card h4 {
+            color: #0f4c81;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .program-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .program-card li {
+            padding: 0.7rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .program-card li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+        }
+
+        /* Campus Life Section */
+        .campus-life {
+            background: white;
+        }
+
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .campus-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 350px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .campus-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .campus-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .campus-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 76, 129, 0.9), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(60px);
+            transition: all 0.3s;
+        }
+
+        .campus-card:hover .campus-overlay {
+            transform: translateY(0);
+        }
+
+        .campus-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Placement Section */
+        .placement {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .placement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .placement-info h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .placement-info p {
+            font-size: 1.2rem;
+            /* margin-bottom: 2rem; */
+            line-height: 1.8;
+        }
+
+        .placement-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .placement-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .placement-stat h3 {
+            font-size: 3rem;
+            /* margin-bottom: 0.5rem; */
+        }
+
+        .placement-companies {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .company-logo {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            height: 100px;
+            font-size: 1.5rem;
+            color: #0f4c81;
+            font-weight: bold;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #f8f9fa;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #ff6b35;
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .author-info h5 {
+            color: #0f4c81;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Events Section */
+        .events {
+            background: white;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .events-section h3 {
+            color: #0f4c81;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #ff6b35;
+        }
+
+        .event-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #ff6b35;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .event-card h4 {
+            color: #0f4c81;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .event-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .event-icon {
+            float: right;
+            font-size: 2rem;
+            color: #ff6b35;
+            opacity: 0.3;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, rgb(15, 76, 129) 0%, rgb(26, 94, 158) 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #0f4c81;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            margin-top: 0.3rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0f4c81;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f4c81 0%, #1a5f9e 100%);
+            color: white;
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #ffa500;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            padding: 0.4rem 0;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1200px) {
+            .news-grid,
+            .program-grid,
+            .campus-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid,
+            .management-grid,
+            .stats-grid,
+            .faculty-highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .placement-content,
+            .events-container,
+            .contact-container,
+            .vision-mission-content,
+            .faculty-about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .news-grid,
+            .features-grid,
+            .management-grid,
+            .program-grid,
+            .campus-grid,
+            .testimonials-grid,
+            .stats-grid,
+            .footer-content,
+            .faculty-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            nav,
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .faculty-about-image {
+                min-height: 300px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="./image.png" alt="" width="150px"></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#campus">Campus</a></li>
+                <li><a href="#placement">Placement</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="./video/hero.mp4" type="video/mp4">
+        </video>
+        <!-- <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Excellence in Education</h1>
+            <p>Empowering students to achieve their dreams through innovative learning experiences</p>
+            <button class="cta-button">Explore Programs</button>
+        </div> -->
+    </section>
+
+    <section id="news">
+        <div class="container">
+            <h2 class="section-title">Latest News & Updates</h2>
+            <div class="news-grid">
+                <div class="news-card fade-in">
+                    <div class="news-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500');"></div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar"></i> December 10, 2025</div>
+                        <h3>New Academic Programs Launch</h3>
+                        <p>Exciting new programs designed to meet the evolving needs of modern education and career preparation.</p>
+                    </div>
+                </div>
+                <div class="news-card fade-in">
+                    <div class="news-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=500');"></div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar"></i> December 8, 2025</div>
+                        <h3>Graduation Ceremony 2025</h3>
+                        <p>Celebrating the achievements of our outstanding graduates who are ready to make their mark on the world.</p>
+                    </div>
+                </div>
+                <div class="news-card fade-in">
+                    <div class="news-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=500');"></div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar"></i> December 5, 2025</div>
+                        <h3>Student Achievement Awards</h3>
+                        <p>Recognizing exceptional students who have demonstrated excellence in academics and leadership.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-mission">
+        <div class="container">
+            <h2 class="section-title">Our Vision & Mission</h2>
+            <div class="vision-mission-content">
+                <div class="vision-card fade-in">
+                    <div class="vm-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To be a globally recognized institution of excellence, nurturing innovative minds and creating future leaders who contribute meaningfully to society. We envision a world where education transcends boundaries, fostering creativity, critical thinking, and holistic development in every student we serve.</p>
+                </div>
+                <div class="mission-card fade-in">
+                    <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To provide world-class education through innovative teaching methodologies, state-of-the-art infrastructure, and comprehensive student support. We are committed to developing well-rounded individuals equipped with knowledge, skills, and values necessary for success in an ever-evolving global landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Expert Faculty</h3>
+                    <p>Learn from experienced professionals dedicated to your success</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Modern Facilities</h3>
+                    <p>State-of-the-art learning environments and resources</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Career Support</h3>
+                    <p>Comprehensive guidance for your professional journey</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Network</h3>
+                    <p>Connect with students and professionals worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="management">
+        <div class="container">
+            <h2 class="section-title">Leadership That Inspires</h2>
+            <p style="text-align: center; color: #666; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">Meet the visionaries behind our institution's success - leaders dedicated to excellence in education</p>
+            
+            <div class="management-grid">
+                <div class="management-card fade-in">
+                    <div class="management-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'); background-size: cover; background-position: center;"></div>
+                    <div class="management-info">
+                        <h4>Dr. James Anderson</h4>
+                        <p class="position">Chairman</p>
+                        <div class="voice-section">
+                            <i class="fas fa-quote-left quote-small"></i>
+                            <p class="chairman-voice">"Education is the cornerstone of progress. Our commitment is to nurture talent, inspire innovation, and create leaders who will shape tomorrow's world with integrity, compassion, and excellence in everything they pursue."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="management-card fade-in">
+                    <div class="management-photo" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400'); background-size: cover; background-position: center;"></div>
+                    <div class="management-info">
+                        <h4>Dr. Sarah Mitchell</h4>
+                        <p class="position">Co-Chairman</p>
+                        <div class="voice-section">
+                            <i class="fas fa-quote-left quote-small"></i>
+                            <p class="chairman-voice">"We believe in holistic development that goes beyond academics. Our mission is fostering an environment where every student discovers their potential, pursues their passion, and emerges as confident global citizens ready for challenges."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faculty">
+        <div class="container">
+            <h2 class="section-title">Our Distinguished Faculty</h2>
+            <p style="text-align: center; color: #666; max-width: 900px; margin: 0 auto 3rem; font-size: 1.1rem;">
+                Our faculty comprises accomplished scholars, industry experts, and dedicated educators committed to academic excellence. With diverse expertise and a passion for teaching, they inspire, mentor, and guide students on their journey to success.
+            </p>
+            
+            <div class="faculty-highlights">
+                <div class="faculty-stat fade-in">
+                    <div class="faculty-stat-icon"><i class="fas fa-award"></i></div>
+                    <h3>PhD Qualified</h3>
+                    <p>85% of our faculty hold doctoral degrees from prestigious institutions worldwide</p>
+                </div>
+                <div class="faculty-stat fade-in">
+                    <div class="faculty-stat-icon"><i class="fas fa-industry"></i></div>
+                    <h3>Industry Experience</h3>
+                    <p>Average 15+ years of combined academic and industry expertise</p>
+                </div>
+                <div class="faculty-stat fade-in">
+                    <div class="faculty-stat-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Research Excellence</h3>
+                    <p>Published over 500+ research papers in international journals</p>
+                </div>
+                <div class="faculty-stat fade-in">
+                    <div class="faculty-stat-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Recognition</h3>
+                    <p>Faculty members honored with national and international awards</p>
+                </div>
+            </div>
+            
+            <div class="faculty-about fade-in">
+                <div class="faculty-about-content">
+                    <div class="faculty-about-image">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600" alt="Faculty" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="faculty-about-text">
+                        <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Excellence</h3>
+                        <p>Our faculty members are not just educators; they are mentors, researchers, and innovators who bring real-world experience into the classroom. They employ cutting-edge pedagogical approaches, integrate technology seamlessly, and create engaging learning environments that challenge and inspire students.</p>
+                        
+                        <h3><i class="fas fa-users"></i> Student-Centric Approach</h3>
+                        <p>Understanding that each student is unique, our faculty provides personalized attention, academic counseling, and continuous support. They are accessible, approachable, and deeply invested in student success, offering guidance that extends beyond academics to career development and personal growth.</p>
+                        
+                        <h3><i class="fas fa-lightbulb"></i> Research & Innovation</h3>
+                        <p>Our faculty actively engages in groundbreaking research, contributing to their fields through publications, patents, and collaborative projects. They encourage student participation in research initiatives, fostering a culture of inquiry, innovation, and intellectual curiosity that prepares students for future challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="course-program">
+        <div class="container">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="program-grid">
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-book-reader"></i></div>
+                    <h4>Academic Excellence</h4>
+                    <ul>
+                        <li>Comprehensive curriculum design</li>
+                        <li>Advanced learning methodologies</li>
+                        <li>Research opportunities</li>
+                        <li>Academic counseling services</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h4>Student Development</h4>
+                    <ul>
+                        <li>Leadership training programs</li>
+                        <li>Communication skills workshops</li>
+                        <li>Personal growth seminars</li>
+                        <li>Mentorship programs</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-building"></i></div>
+                    <h4>Career Services</h4>
+                    <ul>
+                        <li>Job placement assistance</li>
+                        <li>Interview preparation</li>
+                        <li>Resume building workshops</li>
+                        <li>Industry networking events</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h4>Innovation Hub</h4>
+                    <ul>
+                        <li>Entrepreneurship support</li>
+                        <li>Technology incubation</li>
+                        <li>Creative projects</li>
+                        <li>Research funding</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-plane"></i></div>
+                    <h4>International Programs</h4>
+                    <ul>
+                        <li>Study abroad opportunities</li>
+                        <li>Cultural exchange programs</li>
+                        <li>Language learning support</li>
+                        <li>Global partnerships</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon"><i class="fas fa-heart"></i></div>
+                    <h4>Student Wellness</h4>
+                    <ul>
+                        <li>Mental health support</li>
+                        <li>Fitness and sports facilities</li>
+                        <li>Counseling services</li>
+                        <li>Wellness workshops</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="campus-life" id="campus">
+        <div class="container">
+            <h2 class="section-title">Campus Life</h2>
+            <div class="campus-grid">
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-book"></i> Library & Learning</h3>
+                            <p>Modern facilities with extensive resources for research and study</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-users"></i> Student Activities</h3>
+                            <p>Vibrant community with diverse clubs and organizations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-futbol"></i> Sports & Recreation</h3>
+                            <p>World-class sports facilities and fitness centers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-flask"></i> Research Labs</h3>
+                            <p>Cutting-edge laboratories for hands-on learning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-utensils"></i> Dining Facilities</h3>
+                            <p>Diverse cuisine options and comfortable dining spaces</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="campus-card fade-in">
+                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600');">
+                        <div class="campus-overlay">
+                            <h3><i class="fas fa-theater-masks"></i> Arts & Culture</h3>
+                            <p>Creative spaces for music, art, and performances</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="placement" id="placement">
+        <div class="container">
+            <div class="placement-content">
+                <div class="placement-info fade-in">
+                    <h2>Outstanding Placement</h2>
+                    <p>Our students are recruited by top companies worldwide. We provide comprehensive career support and industry connections to ensure your success.</p>
+                    <div class="placement-stats">
+                        <div class="placement-stat">
+                            <h3>95%</h3>
+                            <p>Placement Rate</p>
+                        </div>
+                        <div class="placement-stat">
+                            <h3>200+</h3>
+                            <p>Partner Companies</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="placement-companies fade-in">
+                    <div class="company-logo"><i class="fab fa-google"></i> Google</div>
+                    <div class="company-logo"><i class="fab fa-microsoft"></i> Microsoft</div>
+                    <div class="company-logo"><i class="fab fa-amazon"></i> Amazon</div>
+                    <div class="company-logo"><i class="fab fa-apple"></i> Apple</div>
+                    <div class="company-logo"><i class="fab fa-facebook"></i> Meta</div>
+                    <div class="company-logo"><i class="fab fa-ibm"></i> IBM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Student Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"The education and support I received here transformed my career. The faculty went above and beyond to ensure my success. I'm now working at my dream company!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">JD</div>
+                        <div class="author-info">
+                            <h5>John Doe</h5>
+                            <p>Class of 2024 • Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Amazing campus life with countless opportunities for personal growth. The mentorship program connected me with industry leaders who guided my journey."</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">SM</div>
+                        <div class="author-info">
+                            <h5>Sarah Miller</h5>
+                            <p>Class of 2023 • Data Analyst</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"The placement support was exceptional. From resume building to mock interviews, they prepared us thoroughly for the corporate world. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">RJ</div>
+                        <div class="author-info">
+                            <h5>Robert Johnson</h5>
+                            <p>Class of 2024 • Business Analyst</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events" id="events">
+        <div class="container">
+            <h2 class="section-title">Events & Activities</h2>
+            <div class="events-container">
+                <div class="events-section fade-in">
+                    <h3><i class="far fa-calendar-check"></i> Recent Events</h3>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="event-date">Nov 25, 2025</div>
+                        <h4>Annual Sports Championship</h4>
+                        <p>Inter-college sports competition with over 500 participants showcasing athletic excellence.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="event-date">Nov 20, 2025</div>
+                        <h4>Innovation Summit 2025</h4>
+                        <p>Students presented groundbreaking projects to industry experts and investors.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-music"></i></div>
+                        <div class="event-date">Nov 15, 2025</div>
+                        <h4>Cultural Festival</h4>
+                        <p>Three-day celebration of arts, music, and cultural diversity with international performances.</p>
+                    </div>
+                </div>
+                <div class="events-section fade-in">
+                    <h3><i class="far fa-calendar-plus"></i> Upcoming Events</h3>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="event-date">Dec 20, 2025</div>
+                        <h4>Career Fair 2025</h4>
+                        <p>Meet with 50+ top companies for internships and full-time opportunities.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-rocket"></i></div>
+                        <div class="event-date">Jan 10, 2026</div>
+                        <h4>Startup Pitch Competition</h4>
+                        <p>Students pitch their startup ideas for a chance to win funding and mentorship.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="event-date">Jan 25, 2026</div>
+                        <h4>Alumni Meet 2026</h4>
+                        <p>Network with successful alumni and learn from their career journeys.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>5000+</h3>
+                    <p>Students Enrolled</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>200+</h3>
+                    <p>Expert Faculty</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-icon"><i class="fas fa-book"></i></div>
+                    <h3>50+</h3>
+                    <p>Programs Offered</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
+                    <h3>95%</h3>
+                    <p>Placement Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong><br>
+                            123 Education Street, Seoul<br>
+                            South Korea, 12345
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +82 123-456-7890
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@education.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Office Hours</strong><br>
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 9:00 AM - 1:00 PM
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-subject"></i> Subject</label>
+                            <input type="text" placeholder="Enter subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-comment"></i> Message</label>
+                            <textarea placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Committed to providing exceptional education and fostering the next generation of leaders and innovators through quality programs and dedicated support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#admissions"><i class="fas fa-angle-right"></i> Admissions</a></li>
+                        <li><a href="#academics"><i class="fas fa-angle-right"></i> Academics</a></li>
+                        <li><a href="#campus"><i class="fas fa-angle-right"></i> Campus Life</a></li>
+                        <li><a href="#research"><i class="fas fa-angle-right"></i> Research</a></li>
+                        <li><a href="#alumni"><i class="fas fa-angle-right"></i> Alumni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#library"><i class="fas fa-angle-right"></i> Library</a></li>
+                        <li><a href="#portal"><i class="fas fa-angle-right"></i> Student Portal</a></li>
+                        <li><a href="#calendar"><i class="fas fa-angle-right"></i> Academic Calendar</a></li>
+                        <li><a href="#support"><i class="fas fa-angle-right"></i> Support Services</a></li>
+                        <li><a href="#careers"><i class="fas fa-angle-right"></i> Career Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media for the latest updates and news.</p>
+                    <p style="margin-top: 1rem;">
+                        <i class="fas fa-envelope"></i> info@education.com<br>
+                        <i class="fas fa-phone"></i> +82 123-456-7890
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Education Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'linear-gradient(135deg, #0f4c81 0%, #1a5f9e 100%)';
+                navLinks.style.padding = '1rem';
+            }
+        });
+
+        // Form Submit
+        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        });
+
+        // Stats Counter Animation
+        const statsSection = document.querySelector('.stats');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    animateStats();
+                }
+            });
+        });
+
+        statsObserver.observe(statsSection);
+
+        function animateStats() {
+            const statItems = document.querySelectorAll('.stat-item h3');
+            statItems.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+
+                const counter = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        stat.textContent = stat.textContent.includes('+') ? target + '+' : 
+                                          stat.textContent.includes('%') ? target + '%' : target;
+                        clearInterval(counter);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : 
+                                                                  stat.textContent.includes('%') ? '%' : '');
+                    }
+                }, 16);
+            });
+        }
+    </script>
+</body>
+</html>
