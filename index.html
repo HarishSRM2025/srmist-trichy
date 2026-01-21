@@ -388,7 +388,7 @@
         /* Hero Section with Video */
         .hero {
             position: relative;
-            height: 90vh;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -398,7 +398,7 @@
 
         .hero-video {
             position: absolute;
-            top: 0;
+            top: 5px;
             left: 0;
             width: 100%;
             height: 100%;
@@ -997,10 +997,16 @@
             background: linear-gradient(to top, rgba(15, 76, 129, 0.9), transparent);
             padding: 2rem;
             color: white;
-            transform: translateY(60px);
+            transform: translateY(20px);
             transition: all 0.3s;
         }
-
+        .campus-overlay p{
+            display: none;
+            transition: all 0.3s;
+        }
+        .campus-card:hover .campus-overlay p{
+            display:flex;
+        }
         .campus-card:hover .campus-overlay {
             transform: translateY(0);
         }
@@ -1426,7 +1432,24 @@
             .mobile-menu-btn {
                 display: block;
             }
-
+            .hero {
+                position: relative;
+                height:30vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                width: 100%;
+            }
+            .hero-video {
+                position: absolute;
+                top: 10px;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                z-index: 0;
+            }
             .hero h1 {
                 font-size: 2.2rem;
             }
