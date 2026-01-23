@@ -6,88 +6,19 @@
     <title>Educational Institution</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
 </head>
 <body>
-    <div class="top-bar">
-    <div class="top-bar-wrapper">
-      <!-- Search Bar -->
-      <div class="search-container">
-        <ul class="topbar-menu">
-            <li><a href="#home">Students</a></li>
-            <li><a href="#about">Faculty & Staff</a></li>
-            <li><a href="#programs">Examinations</a></li>
-            <li><a href="#campus">Parents</a></li>
-            <li><a href="#placement">Alumni</a></li>
-            <li><a href="#events">News letter</a></li>
-        </ul>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="quick-links">
-        <a href="./course.html" class="quick-link featured">
-          <svg class="quick-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
-          </svg>
-          Courses offered
-        </a>
-        <a href="./aboutus.html#milestones" class="quick-link">
-          <svg class="quick-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
-          Addmission for 2026 now Live
-        </a>
-      </div>
-    </div>
-  </div>
+    <div class="top-bar" id="topbar"></div>
     
-    <nav id="header">
-        <div class="nav-container">
-            <div class="nav-wrapper">
-            <div class="logo">
-                <img src="./assets/images/image.png" alt="SRM">
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="offcanvas-menu" id="offcanvasMenu">
-            <div class="Offcanvas-logo logo">
-                <img src="./assets/images/image.png" alt="SRM">
-            </div>
-                <ul id="off-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#campus">Campus</a></li>
-                    <li><a href="#placement">Placement</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li ><a href="iqac.html"  class="nmc-nav">Fee Payment</a></li>
-                </ul>
-                <div class="Mobile-help">
-                    <p>Get in Touch</p>
-                    <p><a style="padding: 0;" href="tel:1800 202 4565">1800 202 4565</a></p>
-                    <p><a style="padding: 0;" href="mailto:helpdesk@ist.srmtrichy.edu.in">helpdesk@ist.srmtrichy.edu.in</a></p>
-                </div>
-            </nav>
-            </div>
-        </div>
-
-        <div class="overlay" id="overlay"></div>
-    </nav>
+    <nav id="header"></nav>
     
 
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="./assets/video/hero.mp4" type="video/mp4">
         </video>
-        <!-- <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Welcome to Excellence in Education</h1>
-            <p>Empowering students to achieve their dreams through innovative learning experiences</p>
-            <button class="cta-button">Explore Programs</button>
-        </div> -->
+
     </section>
 
     <section id="news">
@@ -319,62 +250,6 @@
         </div>
     </section>
 
-    <section class="campus-life" id="campus">
-        <div class="container">
-            <h2 class="section-title">Campus Life</h2>
-            <div class="campus-grid">
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-book"></i> Library & Learning</h3>
-                            <p>Modern facilities with extensive resources for research and study</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-users"></i> Student Activities</h3>
-                            <p>Vibrant community with diverse clubs and organizations</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-futbol"></i> Sports & Recreation</h3>
-                            <p>World-class sports facilities and fitness centers</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-flask"></i> Research Labs</h3>
-                            <p>Cutting-edge laboratories for hands-on learning</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-utensils"></i> Dining Facilities</h3>
-                            <p>Diverse cuisine options and comfortable dining spaces</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="campus-card fade-in">
-                    <div class="campus-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600');">
-                        <div class="campus-overlay">
-                            <h3><i class="fas fa-theater-masks"></i> Arts & Culture</h3>
-                            <p>Creative spaces for music, art, and performances</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="placement" id="placement">
         <div class="container">
             <div class="placement-content">
@@ -584,48 +459,8 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Us</h3>
-                    <p>Committed to providing exceptional education and fostering the next generation of leaders and innovators through quality programs and dedicated support.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#admissions"><i class="fas fa-angle-right"></i> Admissions</a></li>
-                        <li><a href="#academics"><i class="fas fa-angle-right"></i> Academics</a></li>
-                        <li><a href="#campus"><i class="fas fa-angle-right"></i> Campus Life</a></li>
-                        <li><a href="#research"><i class="fas fa-angle-right"></i> Research</a></li>
-                        <li><a href="#alumni"><i class="fas fa-angle-right"></i> Alumni</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#library"><i class="fas fa-angle-right"></i> Library</a></li>
-                        <li><a href="#portal"><i class="fas fa-angle-right"></i> Student Portal</a></li>
-                        <li><a href="#calendar"><i class="fas fa-angle-right"></i> Academic Calendar</a></li>
-                        <li><a href="#support"><i class="fas fa-angle-right"></i> Support Services</a></li>
-                        <li><a href="#careers"><i class="fas fa-angle-right"></i> Career Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <p>Follow us on social media for the latest updates and news.</p>
-                    <p style="margin-top: 1rem;">
-                        <i class="fas fa-envelope"></i> info@education.com<br>
-                        <i class="fas fa-phone"></i> +82 123-456-7890
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Education Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
-            </div>
-        </div>
-    </footer>
-
+    <footer id="footer" ></footer>
+    <script src="./assets/js/dom.js"></script>
     <script src="./assets/js/scripts.js"></script>
 </body>
 </html>
